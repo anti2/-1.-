@@ -33,12 +33,16 @@ int main() {
     std::cout << "Input a message\n";
     std::getline(std::cin, message);
 
-    do
-    {
-      std::cout << "Input a key for encrypt (min: -25: max: 25)\n";
-      std::cin >> key;
-    } while (key < -25 || key > 25);
 
+      std::cout << "Input a key for encrypt\n";
+      std::cin >> key;
+      
+      if ((key > 25) || (key < -25))
+      {
+         key -= key - (key%26);
+      } 
+    //  std::cout << "Key: " << key;
+    
     std::cout << "Encrypted message: \n" << encrypt_caesar(message, key);
     std::cout << "\n\n\n";
     std::cout << "Decrypted message: \n" << decrypt_caeser(message, key);
