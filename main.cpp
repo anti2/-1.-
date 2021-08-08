@@ -13,7 +13,7 @@ std::string encrypt_caesar(std::string message, int key)
             }
             else
             {
-              message[i] = (message[i] + key) - 26;
+              (key > 0) ? message[i] = (message[i] + key) - 26: message[i] = (message[i] + key) + 26;
             }
         }
         
@@ -35,9 +35,9 @@ int main() {
 
     do
     {
-        std::cout << "Input a key for encrypt (min - 1: max - 25)\n";
-        std::cin >> key;
-    } while (key < 1 || key > 25);
+      std::cout << "Input a key for encrypt (min: -25: max: 25)\n";
+      std::cin >> key;
+    } while (key < -25 || key > 25);
 
     std::cout << "Encrypted message: \n" << encrypt_caesar(message, key);
     std::cout << "\n\n\n";
